@@ -31,7 +31,7 @@ public int putwst(){
         }
         if(k==0)
             break;
-        System.out.println("");
+        System.out.println();
 
     }
     System.out.println("\n");
@@ -41,9 +41,8 @@ public int putwst(){
 //判断序号是否越界  越界为true
     public boolean panduan(int p)
     {
-        if(p>=0&&p<num)
-            return false;
-        return true;
+
+        return !(p>=0&&p<num);
     }
     //obj 与 int 的同步  s=1  int -> obj
     public void obj_in(Object[][] pq){
@@ -68,14 +67,15 @@ public int putwst(){
 
     //申请连续空间
     public boolean sqq(Object [][] pq,int k){
-    int i=0,j=0,count=0,hang=(num-1)/32+1;//位示图
+    int i,j=0,count=0,hang=(num-1)/32+1;//位示图
         boolean as=false;
         if(k>putwst()){
             System.out.println("空间不足");
             return false;
         }
-for(i=0;i<hang;i++){
-    for(j=0;j<32;j++){
+
+for(i=0;i<hang&&count!=k;i++){
+    for(j=0;j<32&&count!=k;j++){
         if(weishitu[i][j]==0)
             count++;
         else
@@ -83,13 +83,18 @@ for(i=0;i<hang;i++){
         if(count==k)
         {
             as=true;
-            break;
+           // break;
         }
     }
-    if(count==k)
-        break;
+    //if (count==k)
+      //  break;
+
 }
+
+
 if(as) {
+    i--;
+    j--;
     for (; i >= 0; i--) {
         for (; j >= 0; j--) {
             weishitu[i][j] = 1;
@@ -165,10 +170,8 @@ if(as) {
                 return false;
             }
 
-            if(q>h)
-                min=h;
-            else
-                min=q;
+
+            min=Math.min(q,h);
             n=Math.abs(q-h)+1;
             i=min/32;
             j=min-32*i;

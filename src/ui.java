@@ -3,9 +3,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import static java.lang.Double.parseDouble;
 
 
 public class ui extends JFrame implements ActionListener{
@@ -151,7 +149,7 @@ public class ui extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
 
-        int q=0,qq=0,qqq=-1,i;
+        int q,qq,qqq,i;
         boolean lx=false;//判断是否释放连续磁盘
         String s;
 
